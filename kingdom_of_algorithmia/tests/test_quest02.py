@@ -1,3 +1,5 @@
+import textwrap
+
 import pytest
 
 from kingdom_of_algorithmia import quest02
@@ -23,3 +25,12 @@ POWE PO WER P OWE R
 THERE IS THE END
 QAQAQ'''
     assert quest02.part2(words, text) == 42
+
+
+def test_part3():
+    words = ['THE', 'OWE', 'MES', 'ROD', 'RODEO']
+    text = textwrap.dedent('''\
+        HELWORLT
+        ENIGWDXL
+        TRODEOAL''')
+    assert quest02.part3(words, text) == 10
