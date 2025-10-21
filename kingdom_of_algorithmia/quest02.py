@@ -1,5 +1,4 @@
 import re
-from typing import Iterable
 
 
 def read_input(filename: str) -> tuple[list[str], str]:
@@ -25,38 +24,47 @@ def part2(words: list[str], text: str) -> int:
 
 
 def part3(words: list[str], text: str) -> int:
-    type Point = tuple[int, int]
+    text = text.splitlines()
+    width = len(text[0])
+    transposed = [
+        ''.join(z)
+        for z in zip(*text)
+    ]
+    text = [line*2 for line in text]
 
-    RIGHT: Point = 0, 1
-    LEFT: Point = 0, -1
-    UP: Point = -1, 0
-    DOWN: Point = 1, 0
+    def locations(s: str, grid: list[str]):
+        for r, line in enumerate(grid):
+            i = 0
+            while (c := line.find(s, i)) >= 0:
+                yield r, c
+                i = c + 1
 
-    lines = text.splitlines()
-    width = len(lines[0])
+    runic = set()
+    for word in words:
+        for start_r, start_c in locations(word, text):
+            if start_c >= width:
+                continue
+            points = [(start_r, start_c + i) for i in range(len(word))]
+            runic.update(points)
+        for start_r, start_c in locations(word[::-1], text):
+            if start_c >= width:
+                continue
+            points = [(start_r, start_c + i) for i in range(len(word))]
+            runic.update(points)
+        for start_c, start_r in locations(word, transposed):
+            if start_r >= width:
+                continue
+            points = [(start_r + i, start_c) for i in range(len(word))]
+            runic.update(points)
+        for start_c, start_r in locations(word[::-1], transposed):
+            if start_r >= width:
+                continue
+            points = [(start_r + i, start_c) for i in range(len(word))]
+            runic.update(points)
 
-    def check(word: str, pos: Point, d: Point) -> Iterable[Point]:
-        r, c = pos
-        dr, dc = d
-        checks = [(letter, (r + i * dr, (c + i * dc) % width)) for i, letter in enumerate(word)]
-        for letter, (row, col) in checks:
-            if row < 0:
-                # Can't go above the first row, but Python will try to wrap with negative indices
-                return ()
-            try:
-                if lines[row][col] != letter:
-                    return ()
-            except IndexError:
-                return ()
-        return {p for _, p in checks}
+    runic = {(r, c % width) for r, c in runic}
 
-    points = set()
-    for row, line in enumerate(lines):
-        for col, _ in enumerate(line):
-            for word in words:
-                for dir_ in LEFT, RIGHT, UP, DOWN:
-                    points.update(check(word, (row, col), dir_))
-    return len(points)
+    return len(runic)
 
 
 if __name__ == '__main__':
