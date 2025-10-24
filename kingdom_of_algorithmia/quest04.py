@@ -17,6 +17,6 @@ def part3(nums: Collection[int]):
 
 
 if __name__ == '__main__':
-    print(part1_2(parse('everybody_codes_e2024_q04_p1.txt')))
-    print(part1_2(parse('everybody_codes_e2024_q04_p2.txt')))
-    print(part3(parse('everybody_codes_e2024_q04_p3.txt')))
+    print(part1_2(parse('inputs/everybody_codes_e2024_q04_p1.txt')))
+    print(part1_2(parse('inputs/everybody_codes_e2024_q04_p2.txt')))
+    print(part3(parse('inputs/everybody_codes_e2024_q04_p3.txt')))

@@ -68,6 +68,6 @@ def part3(words: list[str], text: str) -> int:
 
 
 if __name__ == '__main__':
-    print(part1(*read_input('everybody_codes_e2024_q02_p1.txt')))
-    print(part2(*read_input('everybody_codes_e2024_q02_p2.txt')))
-    print(part3(*read_input('everybody_codes_e2024_q02_p3.txt')))
+    print(part1(*read_input('inputs/everybody_codes_e2024_q02_p1.txt')))
+    print(part2(*read_input('inputs/everybody_codes_e2024_q02_p2.txt')))
+    print(part3(*read_input('inputs/everybody_codes_e2024_q02_p3.txt')))

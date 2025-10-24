@@ -70,6 +70,6 @@ def part3(notes: str) -> int:
 
 
 if __name__ == '__main__':
-    print(part1('everybody_codes_e2024_q05_p1.txt'))
-    print(part2('everybody_codes_e2024_q05_p2.txt'))
-    print(part3('everybody_codes_e2024_q05_p3.txt'))
+    print(part1('inputs/everybody_codes_e2024_q05_p1.txt'))
+    print(part2('inputs/everybody_codes_e2024_q05_p2.txt'))
+    print(part3('inputs/everybody_codes_e2024_q05_p3.txt'))

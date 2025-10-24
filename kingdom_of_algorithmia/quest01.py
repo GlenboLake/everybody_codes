@@ -23,5 +23,5 @@ def battle(foes: Iterable[str], group_size: int):
 
 if __name__ == '__main__':
     for part in (1, 2, 3):
-        with open(f'everybody_codes_e2024_q01_p{part}.txt') as f:
+        with open(f'inputs/everybody_codes_e2024_q01_p{part}.txt') as f:
             print(f'Part {part}', battle(f.read(), part))

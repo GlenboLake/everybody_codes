@@ -81,6 +81,6 @@ def dig(notes: str, adjacency: Callable[[Point], list[Point]]):
 
 
 if __name__ == '__main__':
-    print(part1_2(Path('everybody_codes_e2024_q03_p1.txt').read_text()))
-    print(part1_2(Path('everybody_codes_e2024_q03_p2.txt').read_text()))
-    print(part3(Path('everybody_codes_e2024_q03_p3.txt').read_text()))
+    print(part1_2(Path('inputs/everybody_codes_e2024_q03_p1.txt').read_text()))
+    print(part1_2(Path('inputs/everybody_codes_e2024_q03_p2.txt').read_text()))
+    print(part3(Path('inputs/everybody_codes_e2024_q03_p3.txt').read_text()))
